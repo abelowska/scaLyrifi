@@ -1,3 +1,5 @@
+package services
+
 import Data.{Song, SongHeader}
 import com.machinepublishers.jbrowserdriver.{JBrowserDriver, Settings, Timezone}
 import org.openqa.selenium.By
