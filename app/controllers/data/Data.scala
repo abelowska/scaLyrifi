@@ -1,4 +1,4 @@
-package Data
+package controllers.data
 
 case class SongHeader(title: String, author: String)
 
