@@ -1,10 +1,13 @@
 # Home
-GET        /                    controllers.HomeController.index
-GET        /next                controllers.HomeController.forPath(path ="next")
+GET         /                    controllers.HomeController.index
+POST        /                    controllers.HomeController.uploadFile()
+
+GET         /home                controllers.HomeController.forPath(path ="home")
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
 
 # Match all other incorrect routes
-GET        /*wrongRoute         controllers.HomeController.notFound(wrongRoute: String)
+GET         /*wrongRoute         controllers.HomeController.notFound(wrongRoute: String)
 

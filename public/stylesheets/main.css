@@ -305,6 +305,7 @@ article p.note {
 
 article table {
     width: 100%;
+    border: 1px black solid;
 }
 
 article table td {
@@ -313,7 +314,6 @@ article table td {
 
 article table tr {
     background: #F4F4F7;
-    border-bottom: 1px solid #eee;
 }
 
 article table tr:nth-of-type(odd) {
@@ -401,8 +401,8 @@ body {
 }
 
 .wrapper {
-    width: 960px;
-    margin: 0 400px;
+    /*width: 960px;*/
+    margin: 0 100px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

@@ -1,5 +1,16 @@
-@(message: String)(content: Html = Html(""))
+@import helper._
+
+@(message: String)(implicit request:RequestHeader, messagesProvider: MessagesProvider)
 @main(s"Witojcie") {
     <h3>@message</h3>
-    <img src="/assets/images/hellothere.jpg" alt="Hello there!">
+
+    @helper.form(action = routes.HomeController.uploadFile, 'enctype -> "multipart/form-data") {
+        @CSRF.formField
+        <input type="file" name="picture">
+
+        <p>
+            <input type="submit" title="Submit">
+        </p>
+
+    }
 }

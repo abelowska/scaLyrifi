@@ -1,6 +1,15 @@
-@(message: String)(content: Html = Html(""))
-@main(s"Sample Play project") {
-    <h3>@message</h3>
-    <img src="/assets/images/grevious.png" alt="Hello there!">
-
+@import controllers.data.SongHeader
+@(songs: Seq[SongHeader])
+@main(s"Witojcie") {
+    <h3>Preview songs</h3>
+    <table>
+        <td class="table-header">Title</td>
+        <td class="table-header">Author</td>
+        @songs.map{ song =>
+            <tr>
+                <td>@song.title</td>
+                <td>@song.author</td>
+            </tr>
+        }
+    </table>
 }
