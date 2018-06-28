@@ -28,9 +28,8 @@ object MainTest {
     implicit val timeout: Timeout = Timeout(25 seconds)
 
     val songs = Try(tesseract.doOCR(file)).toOption
-      .map(s => s.split("\n"))
       .toList
-      .flatten
+      .flatMap(s => s.split("\n"))
       .map(s => {
         println(s)
         val Array(title, author) = s.split(",|\\.")
