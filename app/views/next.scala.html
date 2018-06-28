@@ -1,5 +1,5 @@
 @import controllers.data.SongHeader
-@(songs: Seq[SongHeader])
+@(requestId: Int, songs: Seq[SongHeader])
 @main(s"Witojcie") {
     <h3>Preview songs</h3>
     <table>
@@ -12,4 +12,15 @@
             </tr>
         }
     </table>
+
+    <div>
+        <form action="@controllers.routes.HomeController.index">
+             <input type="submit" value="Cancel" />
+        </form>
+        <form action="@controllers.routes.HomeController.downloadSongs(requestId)">
+            <input type="submit" value="Submit" />
+        </form>
+
+
+    </div>
 }
