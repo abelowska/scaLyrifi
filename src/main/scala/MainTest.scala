@@ -25,18 +25,23 @@ object MainTest {
     val system = ActorSystem()
     val supervisor = system.actorOf(Props(new SupervisorActor()))
 
+    implicit val timeout: Timeout = Timeout(25 seconds)
+
     val songs = Try(tesseract.doOCR(file)).toOption
+      .map(s => s.split("\n"))
+      .toList
+      .flatten
       .map(s => {
-        val Array(title, author) = s.split(",")
-        SongHeader(title, author)
+        println(s)
+        val Array(title, author) = s.split(",|\\.")
+        SongHeader(title.trim, author.trim)
       })
       .map(supervisor ?)
       .map(f => {
-        Await.result(f, Timeout(5 seconds).duration).asInstanceOf[Song]
+        Await.result(f, timeout.duration).asInstanceOf[Song]
       })
-      .toList
 
-    new PdfCreator("songBook").saveMany(songs)
+    new PdfCreator("song").save(songs)
 
     system.terminate()
   }
